@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Container } from './styles'
+import InputText from '../../components/InputText'
+// import { MdSearch } from 'react-icons/md'
+import filter from '../../utils/filter'
+import { Container, Wrapper } from './styles'
 
 const Projects = ({ projects }) => {
+  const { query, setQuery, filterData, setFilterData } = filter(projects)
+
+  useEffect(() => {
+    setFilterData(projects)
+  }, [projects])
+
   return (
     <Container>
-      {console.log(projects)}
-      Projects
+      <Wrapper>
+        <InputText
+          placeholder='Search projects'
+          query={query}
+          setQuery={setQuery}
+          position='right'
+          animation
+        />
+      </Wrapper>
     </Container>
   )
 }
