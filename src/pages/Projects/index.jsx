@@ -1,12 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Container } from './styles'
 
-const Projects = () => {
+const Projects = ({ projects }) => {
   return (
     <Container>
+      {console.log(projects)}
       Projects
     </Container>
   )
 }
 
-export default Projects
+const mapStateToProps = ({ DataReducer }) => {
+  return {
+    projects: DataReducer.projects
+  }
+}
+
+export default connect(mapStateToProps, null)(Projects)
