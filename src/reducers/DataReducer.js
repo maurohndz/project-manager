@@ -1,8 +1,10 @@
-const INITIAL_STATE = {
-  projects: []
-}
+import { mock } from '../mocks/mock'
 
-export default (state = INITIAL_STATE, action) => {
+// const INITIAL_STATE = {
+//   projects: []
+// }
+
+export default (state = mock, action) => {
   switch (action.type) {
     default:
       return state
