@@ -28,6 +28,6 @@ export const Input = styled.input`
     margin-right: auto;
   }`}
   ${props => !props.position && css`{
-    margin: auto;
+    margin: 0 auto;
   }`}
 `

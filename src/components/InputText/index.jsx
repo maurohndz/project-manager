@@ -1,8 +1,7 @@
 import React from 'react'
 import { Input } from './styles'
 
-const InputText = ({ query, setQuery, placeholder, animation = false, position }) => {
-  console.log(position)
+const InputText = ({ query, setQuery, placeholder, animation = false, position = false, name = 'InputText' }) => {
   return (
     <Input
       type='text'
@@ -11,6 +10,7 @@ const InputText = ({ query, setQuery, placeholder, animation = false, position }
       onChange={(e) => setQuery(e.target.value)}
       animation={animation}
       position={position}
+      name={name}
     />
   )
 }

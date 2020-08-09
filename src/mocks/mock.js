@@ -13,6 +13,8 @@ export const mock = {
       _id: projectID,
       userID: userID,
       title: 'International Manager',
+      favorite: true,
+      color: { value: '0566dd' },
       list: [
         {
           _id: listID,
@@ -37,6 +39,14 @@ export const mock = {
           card: []
         }
       ]
+    },
+    {
+      _id: 'projectID-Internal-Brand-Director',
+      userID: userID,
+      title: 'Internal Brand Director',
+      favorite: false,
+      color: { value: '900c3f' },
+      list: []
     }
   ]
 }

@@ -4,6 +4,7 @@ import InputText from '../../components/InputText'
 // import { MdSearch } from 'react-icons/md'
 import filter from '../../utils/filter'
 import { Container, Wrapper } from './styles'
+import GridOfProjects from '../../components/GridOfProjects'
 
 const Projects = ({ projects }) => {
   const { query, setQuery, filterData, setFilterData } = filter(projects)
@@ -20,8 +21,10 @@ const Projects = ({ projects }) => {
           query={query}
           setQuery={setQuery}
           position='right'
+          name='Search projects'
           animation
         />
+        <GridOfProjects projects={filterData} />
       </Wrapper>
     </Container>
   )
