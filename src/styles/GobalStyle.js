@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     --ligth: #ffffff;
     /*App */
     --soft-gray: #e8e8e8;
+    --gray: #f1f1f1;
     --success: #40ad40;
     /* Colors Back */
     --blue-back: #0D76C0;

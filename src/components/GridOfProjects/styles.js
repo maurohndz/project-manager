@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { CardGlobal, Title as CreateTitle } from '../CardProject/styles'
 
 export const Container = styled.div`
   width: 100%;
@@ -20,4 +21,17 @@ export const Title = styled.h2`
   font-weight: 400;
   font-size: 1.1em;
   color: #424242;
+`
+
+export const NewProject = styled(CardGlobal)`
+  display:flex;
+  flex-flow:column;
+  justify-content:center;
+  align-items:center;  
+  background-color: var(--gray);
+  color: #a5a5a5;
+`
+
+export const NewProjectTitle = styled(CreateTitle)`
+  color: #a5a5a5;
 `

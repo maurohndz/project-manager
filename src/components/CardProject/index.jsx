@@ -2,7 +2,7 @@ import React from 'react'
 import { MdStar, MdStarBorder } from 'react-icons/md'
 import { Card, Title, ContainerStar } from './styles'
 
-const CardProject = ({ title, color, favorite }) => {
+const CardProject = ({ title = '', color = '', favorite = false }) => {
   return (
     <Card color={color.value}>
       <Title>{title}</Title>

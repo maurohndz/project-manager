@@ -1,15 +1,19 @@
 import styled, { css } from 'styled-components'
 
-export const Card = styled.div`
-  color: var(--ligth);
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  background-color: ${props => `#${props.color}`};
+export const CardGlobal = styled.div`
   width: 100%;
   border-radius: 15px;
   padding: 15px 20px;
   height: 150px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px 2px rgba(0, 0, 0, .2);
+`
+
+export const Card = styled(CardGlobal)`
+  color: var(--ligth);
+  background-color: ${props => `#${props.color}`};
+  position: relative;
+  z-index: 1;
 
   &:hover{
     &::after {
