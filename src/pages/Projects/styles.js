@@ -9,4 +9,8 @@ export const Container = styled.section`
 export const Wrapper = styled.div`
   width: 70%;
   margin: auto;
+
+  @media (max-width: 900px){
+    width: 85%;
+  }
 `
