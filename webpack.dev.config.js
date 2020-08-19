@@ -8,7 +8,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    port: 3000
+    port: 3000,
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.js', '.jsx']

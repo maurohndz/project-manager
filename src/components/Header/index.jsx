@@ -2,13 +2,14 @@ import React from 'react'
 import ProfileNav from '../ProfileNav'
 import Icon from '../../../public/assets/img/icon-32.png'
 import { Container, Logo, Navbar, ItemNav } from './styles'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <Container>
       <Navbar>
-        <ItemNav> <a href='#'>Home</a> </ItemNav>
-        <ItemNav> <a href='#'>Projects</a> </ItemNav>
+        <ItemNav> <Link to='/'>Home</Link> </ItemNav>
+        <ItemNav> <Link to='/projects'>Projects</Link> </ItemNav>
       </Navbar>
       <Logo href='#'>
         <img src={Icon} alt='Project Manager Logo' />
