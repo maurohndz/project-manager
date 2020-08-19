@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     /*App */
     --soft-gray: #e8e8e8;
     --gray: #f1f1f1;
+    --dark-gray: #a5a5a5;
     --success: #40ad40;
     /* Colors Back */
     --blue-back: #0D76C0;
@@ -22,5 +23,9 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+  body{
+  overflow: hidden;
+
   }
 `

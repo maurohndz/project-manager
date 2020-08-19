@@ -23,15 +23,15 @@ export const Title = styled.h2`
   color: #424242;
 `
 
-export const NewProject = styled(CardGlobal)`
+export const NewProjectCard = styled(CardGlobal)`
   display:flex;
   flex-flow:column;
   justify-content:center;
   align-items:center;  
   background-color: var(--gray);
-  color: #a5a5a5;
+  color: var(--dark-gray);
 `
 
 export const NewProjectTitle = styled(CreateTitle)`
-  color: #a5a5a5;
+  color: var(--dark-gray);
 `

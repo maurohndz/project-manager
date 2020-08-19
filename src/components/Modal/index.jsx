@@ -1,10 +1,11 @@
 import React, { createRef } from 'react'
 import { createPortal } from 'react-dom'
-import { Back, Container } from './styles'
+// import { MdHighlightOff } from 'react-icons/md'
+import { Back, Container, CloseBtn } from './styles'
 
 const CONATINER_MODAL = document.getElementById('modal')
 
-const Modal = ({ isOpen, close }) => {
+const Modal = ({ isOpen, close, children }) => {
   const ModalBack = createRef('modal-back')
   const ModalContainer = createRef('modal-container')
 
@@ -15,7 +16,8 @@ const Modal = ({ isOpen, close }) => {
   return createPortal(
     <Back ref={ModalBack}>
       <Container ref={ModalContainer}>
-        hola
+        <CloseBtn size={30} onClick={close} />
+        {children}
       </Container>
     </Back>
     , CONATINER_MODAL)

@@ -5,6 +5,16 @@ export const Container = styled.section`
   height: 90.5vh;
   padding: 20px;
   background-color: var(--ligth);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
 `
 export const Wrapper = styled.div`
   width: 70%;

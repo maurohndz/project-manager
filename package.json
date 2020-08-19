@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mau02ro/project-manager#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
