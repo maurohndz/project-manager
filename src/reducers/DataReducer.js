@@ -1,5 +1,5 @@
 import { mock } from '../mocks/mock'
-import { SET_FAVORITE_PROJECT } from '../types/dataTypes'
+import { SET_FAVORITE_PROJECT, CREATE_PROJECT } from '../types/dataTypes'
 
 // const INITIAL_STATE = {
 //   projects: []
@@ -20,6 +20,12 @@ export default (state = mock, action) => {
 
           return project
         })
+      }
+
+    case CREATE_PROJECT:
+      return {
+        ...state,
+        projects: [...state.projects, action.payload]
       }
 
     default:

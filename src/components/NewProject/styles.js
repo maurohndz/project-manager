@@ -37,3 +37,13 @@ export const ColorContent = styled.div`
     border-radius: 50%;
   }`}
 `
+
+export const ErrorSpan = styled.span`
+  color: red;
+  font-size: .8em;
+  display: none;
+
+  ${props => props.error && css`{
+    display: inline;
+  }`}
+`

@@ -1,16 +1,29 @@
 import React, { useState } from 'react'
 import InputText from '../InputText'
-import { Container, Group, Label, ColorContent, GridColors, Title } from './styles'
-import { connect } from 'react-redux'
+import { Container, Group, Label, ColorContent, GridColors, Title, ErrorSpan } from './styles'
 import Button from '../Button'
 
-const NewProject = ({ colors }) => {
+const NewProject = ({ colors, userId, close, createProject }) => {
   const [title, setTitle] = useState('')
-  const [color, setColor] = useState('')
+  const [color, setColor] = useState(null)
+  const [errorTitle, setErrorTitle] = useState(null)
+  const [errorColor, setErrorColor] = useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('ok')
+
+    if (!title) {
+      setErrorTitle(true)
+    } else if (!color) {
+      setErrorColor(true)
+    } else {
+      createProject({
+        title: title,
+        userID: userId,
+        color: { value: color }
+      })
+      close()
+    }
   }
 
   return (
@@ -27,7 +40,9 @@ const NewProject = ({ colors }) => {
           query={title}
           setQuery={setTitle}
           placeholder='Insert project title'
+          focus={() => setErrorTitle(null)}
         />
+        <ErrorSpan error={errorTitle}>Insert project title</ErrorSpan>
       </Group>
       <Group>
         <Label>Select Color</Label>
@@ -36,13 +51,17 @@ const NewProject = ({ colors }) => {
             colors.map((value, key) => (
               <ColorContent
                 color={value}
-                onClick={() => setColor(value)}
+                onClick={() => {
+                  setColor(value)
+                  setErrorColor(null)
+                }}
                 key={`${value}-${key}`}
                 select={value === color}
               />
             ))
           }
         </GridColors>
+        <ErrorSpan error={errorColor}>Select project color</ErrorSpan>
       </Group>
       <Group>
         <Button typeBtn='success' type='submit' text='Save' />
@@ -51,10 +70,4 @@ const NewProject = ({ colors }) => {
   )
 }
 
-const mapStateToProps = ({ AppReducer }) => {
-  return {
-    colors: AppReducer.colors
-  }
-}
-
-export default connect(mapStateToProps)(NewProject)
+export default NewProject
