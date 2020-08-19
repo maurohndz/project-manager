@@ -5,7 +5,7 @@ import { MdAddCircleOutline } from 'react-icons/md'
 import Modal from '../Modal'
 import NewProject from '../NewProject'
 
-const GridOfProjects = ({ projects }) => {
+const GridOfProjects = ({ projects, setFavoriteProject }) => {
   const favorite = projects.filter(item => item.favorite)
   const projectsData = projects.filter(item => !item.favorite)
   const [modal, setModal] = useState(false)
@@ -18,7 +18,7 @@ const GridOfProjects = ({ projects }) => {
           <Grid>
             {
               favorite.map((project) => {
-                return <CardProject key={project._id} {...project} />
+                return <CardProject key={project._id} {...project} setFavoriteProject={setFavoriteProject} />
               })
             }
           </Grid>
@@ -29,7 +29,7 @@ const GridOfProjects = ({ projects }) => {
         <Grid>
           {
             projectsData.map((project) => {
-              return <CardProject key={project._id} {...project} />
+              return <CardProject key={project._id} {...project} setFavoriteProject={setFavoriteProject} />
             })
           }
           <NewProjectCard onClick={() => setModal(true)}>

@@ -5,8 +5,9 @@ import InputText from '../../components/InputText'
 import filter from '../../utils/filter'
 import { Container, Wrapper } from './styles'
 import GridOfProjects from '../../components/GridOfProjects'
+import { setFavoriteProject } from '../../actions/projectActions'
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, setFavoriteProject }) => {
   const { query, setQuery, filterData, setFilterData } = filter(projects)
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const Projects = ({ projects }) => {
           name='Search projects'
           animation
         />
-        <GridOfProjects projects={filterData} />
+        <GridOfProjects projects={filterData} setFavoriteProject={setFavoriteProject} />
       </Wrapper>
     </Container>
   )
@@ -36,4 +37,8 @@ const mapStateToProps = ({ DataReducer }) => {
   }
 }
 
-export default connect(mapStateToProps, null)(Projects)
+const mapDispatchToProps = {
+  setFavoriteProject
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects)
