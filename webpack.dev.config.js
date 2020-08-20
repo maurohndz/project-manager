@@ -5,11 +5,11 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
     port: 3000,
-    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true
   },
   resolve: {
