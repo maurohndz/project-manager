@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const CardGlobal = styled.div`
   width: 100%;
@@ -7,6 +8,9 @@ export const CardGlobal = styled.div`
   height: 150px;
   cursor: pointer;
   box-shadow: 0 5px 10px 2px rgba(0, 0, 0, .2);
+`
+export const CardLink = styled(Link)`
+  text-decoration: none;
 `
 
 export const Card = styled(CardGlobal)`
