@@ -15,7 +15,15 @@ const NewCard = () => {
     console.log(e)
     if (!title) {
       setErrorTitle(true)
+    } else {
+      clearData()
     }
+  }
+
+  const clearData = () => {
+    setController(false)
+    setTitle('')
+    setErrorTitle(null)
   }
 
   return (
@@ -41,7 +49,7 @@ const NewCard = () => {
               <ErrorLabel text='Insert card title' error={errorTitle} />
               <ContainerBtn>
                 <Button text='Save' type='submit' />
-                <BtnClose size={30} onClick={() => setController(false)} />
+                <BtnClose size={30} onClick={clearData} />
               </ContainerBtn>
             </form>
           </ConatinerForm>

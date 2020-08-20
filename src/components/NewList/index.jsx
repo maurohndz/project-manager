@@ -15,7 +15,15 @@ const NewList = () => {
 
     if (!title) {
       setErrorTitle(true)
+    } else {
+      clearData()
     }
+  }
+
+  const clearData = () => {
+    setController(false)
+    setTitle('')
+    setErrorTitle(null)
   }
 
   return (
@@ -41,7 +49,7 @@ const NewList = () => {
               <ErrorLabel text='Insert list title' error={errorTitle} />
               <ConatinerBtn>
                 <Button text='Save' type='submit' />
-                <BtnClose size={30} onClick={() => setController(!controller)} />
+                <BtnClose size={30} onClick={clearData} />
               </ConatinerBtn>
             </form>
           </Container>
