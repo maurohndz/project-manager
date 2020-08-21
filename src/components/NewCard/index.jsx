@@ -31,7 +31,7 @@ const NewCard = () => {
       {
         !controller &&
           <ConatinerOpen onClick={() => setController(true)}>
-            <p>Create new card</p>
+            <p>Create a new card</p>
             <MdAddCircleOutline size={25} />
           </ConatinerOpen>
       }

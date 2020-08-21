@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { CradList } from '../CardList/styles'
+import { CradList } from '../List/styles'
 import { MdRemoveCircleOutline } from 'react-icons/md'
 
 export const ConatinerForm = styled(CradList)`

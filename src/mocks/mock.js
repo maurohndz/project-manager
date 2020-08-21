@@ -21,9 +21,16 @@ export const mock = {
           projectID: projectID,
           userID: userID,
           title: 'Direct Communications',
-          card: [
+          cards: [
             {
               _id: cardID,
+              projectID: projectID,
+              userID: userID,
+              listID: listID,
+              title: 'Customer Configuration'
+            },
+            {
+              _id: 54254895,
               projectID: projectID,
               userID: userID,
               listID: listID,
@@ -36,7 +43,7 @@ export const mock = {
           projectID: projectID,
           userID: userID,
           title: 'Global Configuration Officer',
-          card: []
+          cards: []
         }
       ]
     },

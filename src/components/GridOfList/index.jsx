@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from './styles'
-import CardList from '../CardList'
+import List from '../List'
 import NewList from '../NewList'
 
 const GridOfList = ({ lists }) => {
@@ -9,7 +9,7 @@ const GridOfList = ({ lists }) => {
       {
         lists.map((list) => {
           return (
-            <CardList {...list} key={list._id} />
+            <List {...list} key={list._id} />
           )
         })
       }

@@ -21,3 +21,17 @@ export const TitleList = styled.h3`
   color: #605f5f;
   margin-bottom: 8px;
 `
+
+export const Cards = styled.div`
+  width: 100%;
+  max-height: 300px;
+  margin-bottom: 15px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+`
