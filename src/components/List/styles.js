@@ -6,6 +6,7 @@ export const CradList = styled.div`
   border-radius: 10px;
   width: 100%;
   max-width: 280px;
+  min-width: 280px;
   height: max-content;
   margin-right: 1.8em;
 `
