@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import GridOfList from '../../components/GridOfList'
 import { Container } from './styles'
 import { changeBoardColor } from '../../actions/appActions'
+import HeaderBoard from '../../components/HeaderBoard'
+import { setFavoriteProject } from '../../actions/projectActions'
 
 const mock = {
   _id: '',
@@ -13,7 +15,7 @@ const mock = {
   list: []
 }
 
-const Board = ({ projects, match: { params }, changeBoardColor, boardColor }) => {
+const Board = ({ projects, match: { params }, changeBoardColor, boardColor, setFavoriteProject }) => {
   const [project, setProject] = useState(mock)
 
   useEffect(() => {
@@ -25,11 +27,16 @@ const Board = ({ projects, match: { params }, changeBoardColor, boardColor }) =>
         }
       }
     })
-  }, [])
+  }, [projects])
 
   return (
     <Container>
-      Board
+      <HeaderBoard
+        title={project.title}
+        favorite={project.favorite}
+        idProject={project._id}
+        changeFavorite={setFavoriteProject}
+      />
       <GridOfList lists={project.list} />
     </Container>
   )
@@ -42,7 +49,8 @@ const mapStateToProps = ({ DataReducer }) => {
   }
 }
 const mapDispatchToProps = {
-  changeBoardColor
+  changeBoardColor,
+  setFavoriteProject
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)
