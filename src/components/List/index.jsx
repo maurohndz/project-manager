@@ -7,13 +7,16 @@ const List = ({ title, cards }) => {
   return (
     <Container>
       <TitleList>{title}</TitleList>
-      <Cards>
-        {
-          cards.map((item) => {
-            return <Card key={item._id} {...item} />
-          })
-        }
-      </Cards>
+      {
+        cards.length > 0 &&
+          <Cards>
+            {
+              cards.map((item) => {
+                return <Card key={item._id} {...item} />
+              })
+            }
+          </Cards>
+      }
       <NewCard />
     </Container>
   )
