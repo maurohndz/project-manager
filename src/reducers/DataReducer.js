@@ -1,5 +1,5 @@
 import { mock } from '../mocks/mock'
-import { SET_FAVORITE_PROJECT, CREATE_PROJECT, CHANGE_BOARD_COLOR } from '../types/dataTypes'
+import { SET_FAVORITE_PROJECT, CREATE_PROJECT, CHANGE_BOARD_COLOR, CREATE_LIST } from '../types/dataTypes'
 
 const INITIAL_STATE = {
   boardColor: null
@@ -32,6 +32,21 @@ export default (state = { ...mock, ...INITIAL_STATE }, action) => {
       return {
         ...state,
         boardColor: action.payload
+      }
+
+    case CREATE_LIST:
+      return {
+        ...state,
+        projects: state.projects.map((project) => {
+          if (project._id === action.payload.projectID) {
+            return {
+              ...project,
+              list: [...project.list, action.payload]
+            }
+          }
+
+          return project
+        })
       }
 
     default:

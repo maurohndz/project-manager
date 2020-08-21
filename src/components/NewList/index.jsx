@@ -5,7 +5,7 @@ import { Container, ConatinerBtn, BtnClose, CreateContainer } from './styles'
 import ErrorLabel from '../ErrorLabel'
 import { MdAddCircleOutline } from 'react-icons/md'
 
-const NewList = () => {
+const NewList = ({ createList }) => {
   const [controller, setController] = useState(false)
   const [title, setTitle] = useState('')
   const [errorTitle, setErrorTitle] = useState(null)
@@ -16,6 +16,7 @@ const NewList = () => {
     if (!title) {
       setErrorTitle(true)
     } else {
+      createList({ title: title })
       clearData()
     }
   }

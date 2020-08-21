@@ -3,7 +3,7 @@ import { Container } from './styles'
 import List from '../List'
 import NewList from '../NewList'
 
-const GridOfList = ({ lists }) => {
+const GridOfList = ({ lists, createList }) => {
   return (
     <Container>
       {
@@ -13,7 +13,7 @@ const GridOfList = ({ lists }) => {
           )
         })
       }
-      <NewList />
+      <NewList createList={createList} />
     </Container>
   )
 }
