@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import GridOfList from '../../components/GridOfList'
 import { Container } from './styles'
+import { changeBoardColor } from '../../actions/appActions'
 
 const mock = {
   _id: '',
@@ -12,14 +13,16 @@ const mock = {
   list: []
 }
 
-const Board = ({ projects, match: { params } }) => {
+const Board = ({ projects, match: { params }, changeBoardColor, boardColor }) => {
   const [project, setProject] = useState(mock)
 
   useEffect(() => {
-    console.log('useEffect')
     projects.map((item) => {
       if (item._id === params.id) {
         setProject(item)
+        if (!boardColor) {
+          changeBoardColor(item.color)
+        }
       }
     })
   }, [])
@@ -27,7 +30,6 @@ const Board = ({ projects, match: { params } }) => {
   return (
     <Container>
       Board
-      {console.log(project)}
       <GridOfList lists={project.list} />
     </Container>
   )
@@ -35,8 +37,12 @@ const Board = ({ projects, match: { params } }) => {
 
 const mapStateToProps = ({ DataReducer }) => {
   return {
-    projects: DataReducer.projects
+    projects: DataReducer.projects,
+    boardColor: DataReducer.boardColor
   }
 }
+const mapDispatchToProps = {
+  changeBoardColor
+}
 
-export default connect(mapStateToProps, null)(Board)
+export default connect(mapStateToProps, mapDispatchToProps)(Board)

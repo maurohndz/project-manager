@@ -9,18 +9,19 @@ const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
 
   return (
     <>
-      {favorite.length && (
-        <Container>
-          <Title>Favorite Projects</Title>
-          <Grid>
-            {
-              favorite.map((project) => {
-                return <CardProject key={project._id} {...project} setFavoriteProject={setFavoriteProject} />
-              })
-            }
-          </Grid>
-        </Container>
-      )}
+      {
+        favorite.length > 0 &&
+          <Container>
+            <Title>Favorite Projects</Title>
+            <Grid>
+              {
+                favorite.map((project) => {
+                  return <CardProject key={project._id} {...project} setFavoriteProject={setFavoriteProject} />
+                })
+              }
+            </Grid>
+          </Container>
+      }
       <Container>
         <Title>Your Projects</Title>
         <Grid>
