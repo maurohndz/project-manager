@@ -4,7 +4,7 @@ import GridOfList from '../../components/GridOfList'
 import { Container } from './styles'
 import { changeBoardColor } from '../../actions/appActions'
 import HeaderBoard from '../../components/HeaderBoard'
-import { setFavoriteProject, createList } from '../../actions/projectActions'
+import { setFavoriteProject, createList, createCard } from '../../actions/projectActions'
 
 const mock = {
   _id: '',
@@ -15,7 +15,16 @@ const mock = {
   list: []
 }
 
-const Board = ({ projects, match: { params }, userID, changeBoardColor, boardColor, setFavoriteProject, createList }) => {
+const Board = (props) => {
+  const {
+    projects,
+    match: { params },
+    userID, changeBoardColor,
+    createCard,
+    boardColor,
+    setFavoriteProject,
+    createList
+  } = props
   const [project, setProject] = useState(mock)
 
   useEffect(() => {
@@ -37,6 +46,14 @@ const Board = ({ projects, match: { params }, userID, changeBoardColor, boardCol
     })
   }
 
+  const handleCreateCard = (data) => {
+    createCard({
+      ...data,
+      projectID: project._id,
+      userID: userID
+    })
+  }
+
   return (
     <Container>
       <HeaderBoard
@@ -45,7 +62,11 @@ const Board = ({ projects, match: { params }, userID, changeBoardColor, boardCol
         idProject={project._id}
         changeFavorite={setFavoriteProject}
       />
-      <GridOfList lists={project.list} createList={handleCreateList} />
+      <GridOfList
+        lists={project.list}
+        createList={handleCreateList}
+        createCard={handleCreateCard}
+      />
     </Container>
   )
 }
@@ -60,7 +81,8 @@ const mapStateToProps = ({ DataReducer }) => {
 const mapDispatchToProps = {
   changeBoardColor,
   setFavoriteProject,
-  createList
+  createList,
+  createCard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

@@ -4,6 +4,7 @@ import { MdRemoveCircleOutline } from 'react-icons/md'
 
 export const ConatinerForm = styled(CradList)`
   background-color: #f7f7f7 !important;
+  min-width: auto !important;
 `
 
 export const ConatinerOpen = styled.div`

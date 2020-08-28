@@ -5,17 +5,19 @@ import ErrorLabel from '../ErrorLabel'
 import { MdAddCircleOutline } from 'react-icons/md'
 import { ContainerBtn, BtnClose, ConatinerForm, ConatinerOpen } from './styles'
 
-const NewCard = () => {
+const NewCard = ({ createCard }) => {
   const [controller, setController] = useState(false)
   const [title, setTitle] = useState('')
   const [errorTitle, setErrorTitle] = useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(e)
     if (!title) {
       setErrorTitle(true)
     } else {
+      createCard({
+        title
+      })
       clearData()
     }
   }

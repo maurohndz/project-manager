@@ -14,7 +14,7 @@ const Layout = ({ children, boardColor, location: { pathname }, changeBoardColor
 
   return (
     <Container boardColor={boardColor}>
-      <Header />
+      <Header changeBoardColor={changeBoardColor} />
       {children}
     </Container>
   )

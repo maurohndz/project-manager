@@ -3,7 +3,14 @@ import { Container, TitleList, Cards } from './styles'
 import NewCard from '../NewCard'
 import Card from '../Card'
 
-const List = ({ title, cards }) => {
+const List = ({ title, cards, createCard, _id }) => {
+  const handleCreateCard = (data) => {
+    createCard({
+      ...data,
+      listID: _id
+    })
+  }
+
   return (
     <Container>
       <TitleList>{title}</TitleList>
@@ -17,7 +24,7 @@ const List = ({ title, cards }) => {
             }
           </Cards>
       }
-      <NewCard />
+      <NewCard createCard={handleCreateCard} />
     </Container>
   )
 }

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Navbar = styled.ul`
   display: flex;
@@ -32,7 +33,7 @@ export const Container = styled.header`
   }`}
 `
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   flex: 1;
   margin: auto;
   font-size: 1em;

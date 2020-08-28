@@ -1,8 +1,7 @@
-import { SET_FAVORITE_PROJECT, CREATE_PROJECT, CREATE_LIST } from '../types/dataTypes'
+import { SET_FAVORITE_PROJECT, CREATE_PROJECT, CREATE_LIST, CREATE_CARD } from '../types/dataTypes'
 import { v4 as uuidv4 } from 'uuid'
 
 export const setFavoriteProject = (idProject) => {
-  console.log(idProject)
   return {
     type: SET_FAVORITE_PROJECT,
     payload: idProject
@@ -28,6 +27,17 @@ export const createList = (data) => {
       ...data,
       _id: uuidv4(),
       cards: []
+    }
+  }
+}
+
+export const createCard = (data) => {
+  return {
+    type: CREATE_CARD,
+    payload: {
+      _id: uuidv4(),
+      ...data,
+      toDo: []
     }
   }
 }
