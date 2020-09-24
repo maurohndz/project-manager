@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import InputText from '../InputText'
 import { Container, Group, Label, ColorContent, GridColors, Title, ErrorSpan } from './styles'
+import Colors from '../Colors'
 import Button from '../Button'
 
 const NewProject = ({ colors, userId, close, createProject }) => {
@@ -46,21 +47,7 @@ const NewProject = ({ colors, userId, close, createProject }) => {
       </Group>
       <Group>
         <Label>Select Color</Label>
-        <GridColors>
-          {
-            colors.map((value, key) => (
-              <ColorContent
-                color={value}
-                onClick={() => {
-                  setColor(value)
-                  setErrorColor(null)
-                }}
-                key={`${value}-${key}`}
-                select={value === color}
-              />
-            ))
-          }
-        </GridColors>
+        <Colors getColor={() => {}} />
         <ErrorSpan error={errorColor}>Select project color</ErrorSpan>
       </Group>
       <Group>
