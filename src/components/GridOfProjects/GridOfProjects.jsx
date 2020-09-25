@@ -16,7 +16,7 @@ const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
             <Grid>
               {
                 favorite.map((project) => {
-                  return <CardProject key={project._id} {...project} setFavoriteProject={setFavoriteProject} />
+                  return <CardProject key={project.id} {...project} setFavoriteProject={setFavoriteProject} />
                 })
               }
             </Grid>
@@ -27,7 +27,7 @@ const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
         <Grid>
           {
             projectsData.map((project) => {
-              return <CardProject key={project._id} {...project} setFavoriteProject={setFavoriteProject} />
+              return <CardProject key={project.id} {...project} setFavoriteProject={setFavoriteProject} />
             })
           }
           <NewProjectCard onClick={openModal}>

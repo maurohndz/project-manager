@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
+import { getColor } from '../../utils/colors'
 
 export const CardGlobal = styled.div`
   width: 100%;
@@ -15,7 +16,7 @@ export const CardLink = styled(Link)`
 
 export const Card = styled(CardGlobal)`
   color: var(--ligth);
-  background-color: ${props => `#${props.color}`};
+  background-color: ${props => `#${getColor(props.color)}`};
   position: relative;
   z-index: 1;
 

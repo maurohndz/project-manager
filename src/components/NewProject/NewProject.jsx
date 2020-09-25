@@ -4,7 +4,7 @@ import { Container, Group, Label, ColorContent, GridColors, Title, ErrorSpan } f
 import Colors from '../Colors'
 import Button from '../Button'
 
-const NewProject = ({ colors, userId, close, createProject }) => {
+const NewProject = ({ userId, close, addProject }) => {
   const [title, setTitle] = useState('')
   const [color, setColor] = useState(null)
   const [errorTitle, setErrorTitle] = useState(null)
@@ -18,10 +18,10 @@ const NewProject = ({ colors, userId, close, createProject }) => {
     } else if (!color) {
       setErrorColor(true)
     } else {
-      createProject({
+      addProject({
+        userId,
         title: title,
-        userID: userId,
-        color: { value: color }
+        color
       })
       close()
     }
@@ -45,11 +45,13 @@ const NewProject = ({ colors, userId, close, createProject }) => {
         />
         <ErrorSpan error={errorTitle}>Insert project title</ErrorSpan>
       </Group>
+
       <Group>
         <Label>Select Color</Label>
-        <Colors getColor={() => {}} />
+        <Colors getColor={(key) => setColor(key)} select={color} />
         <ErrorSpan error={errorColor}>Select project color</ErrorSpan>
       </Group>
+      
       <Group>
         <Button typeBtn='success' type='submit' text='Save' />
       </Group>

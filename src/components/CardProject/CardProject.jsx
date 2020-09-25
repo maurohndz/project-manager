@@ -16,7 +16,7 @@ const CardProject = ({ _id, title = '', color = '', favorite = false, history, s
   }
 
   return (
-    <Card color={color.value} onClick={redirectProject}>
+    <Card color={color} onClick={redirectProject}>
       <Title>{title}</Title>
       {
         favorite

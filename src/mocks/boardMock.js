@@ -5,7 +5,7 @@ const boardId = '902338ba-c03c-4e98-b5c4-56fe5e32c9db'
 const boardIdTwo = '890338ba-c03c-4e98-b5c4-56fe5e32c9db'
 
 
-const boards = [
+export const boardMock = [
 	{
 		id: boardId,
     projectId: projectID,

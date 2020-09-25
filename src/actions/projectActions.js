@@ -1,43 +1,45 @@
-import { SET_FAVORITE_PROJECT, CREATE_PROJECT, CREATE_LIST, CREATE_CARD } from '../types/dataTypes'
 import { v4 as uuidv4 } from 'uuid'
 
-export const setFavoriteProject = (idProject) => {
-  return {
-    type: SET_FAVORITE_PROJECT,
-    payload: idProject
+import { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT, FAVORITE } from '../types/projectTypes'
+import { ADD_BOARD } from '../types/boardTypes'
+import { schemaBoard } from './boardActions'
+
+export const addProject = (project) => async (dispatch) => {
+  let projectId = uuidv4()
+  let board = schemaBoard(projectId)
+
+  dispatch({
+    type:ADD_BOARD,
+    payload: board,
+  })
+
+  let fullProject = {
+    id: projectId,
+    userId: project.userId,
+    boardId: board.id,
+    title: project.title,
+    favorite: false,
+    color: project.color
   }
+
+  dispatch({
+    type:ADD_PROJECT,
+    payload: fullProject,
+  })
+}
+
+export const setFavoriteProject = (idProject) => {
+
 }
 
 export const createProject = (data) => {
-  return {
-    type: CREATE_PROJECT,
-    payload: {
-      ...data,
-      _id: uuidv4(),
-      favorite: false,
-      list: []
-    }
-  }
+
 }
 
 export const createList = (data) => {
-  return {
-    type: CREATE_LIST,
-    payload: {
-      ...data,
-      _id: uuidv4(),
-      cards: []
-    }
-  }
+
 }
 
 export const createCard = (data) => {
-  return {
-    type: CREATE_CARD,
-    payload: {
-      _id: uuidv4(),
-      ...data,
-      toDo: []
-    }
-  }
+
 }

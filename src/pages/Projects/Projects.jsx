@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+
 import InputText from '../../components/InputText'
-// import { MdSearch } from 'react-icons/md'
-import filter from '../../utils/filter'
+import useFilter from '../../hooks/useFilter.js'
 import { Container, Wrapper } from './styles'
 import GridOfProjects from '../../components/GridOfProjects'
 import Modal from '../../components/Modal'
 import NewProject from '../../components/NewProject'
-import { setFavoriteProject, createProject } from '../../actions/projectActions'
+import { setFavoriteProject, addProject } from '../../actions/projectActions'
 
-const Projects = ({ projects, userId, colors, createProject, setFavoriteProject }) => {
-  const { query, setQuery, filterData, setFilterData } = filter(projects)
+const Projects = ({ projects, userId, addProject, setFavoriteProject }) => {
+  const { query, setQuery, filterData, setFilterData } = useFilter(projects)
   const [modal, setModal] = useState(false)
 
   useEffect(() => {
@@ -19,6 +19,7 @@ const Projects = ({ projects, userId, colors, createProject, setFavoriteProject 
 
   return (
     <Container>
+      {console.log(projects)}
       <Wrapper>
         <InputText
           placeholder='Search projects'
@@ -28,26 +29,33 @@ const Projects = ({ projects, userId, colors, createProject, setFavoriteProject 
           name='Search projects'
           animation
         />
-        <GridOfProjects projects={filterData} setFavoriteProject={setFavoriteProject} openModal={() => setModal(true)} />
+        <GridOfProjects
+          projects={filterData}
+          setFavoriteProject={setFavoriteProject}
+          openModal={() => setModal(true)}
+        />
         <Modal isOpen={modal} close={() => setModal(false)}>
-          <NewProject colors={colors} userId={userId} createProject={createProject} close={() => setModal(false)} />
+          <NewProject
+            userId={userId}
+            addProject={addProject}
+            close={() => setModal(false)}
+          />
         </Modal>
       </Wrapper>
     </Container>
   )
 }
 
-const mapStateToProps = ({ DataReducer, AppReducer }) => {
+const mapStateToProps = ({ projectReducer, userReducer }) => {
   return {
-    projects: DataReducer.projects,
-    userId: DataReducer.user._id,
-    colors: AppReducer.colors
+    projects: projectReducer.projects,
+    userId: userReducer.id,
   }
 }
 
 const mapDispatchToProps = {
   setFavoriteProject,
-  createProject
+  addProject
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects)

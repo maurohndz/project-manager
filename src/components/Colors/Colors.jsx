@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getColors } from '../../utils/colors'
 import { Container, Item } from './styles'
 
-const Colors = ({ getColor }) => {
+const Colors = ({ getColor, select }) => {
 	const [colors] = useState(getColors)
 
 	return (
@@ -13,6 +13,7 @@ const Colors = ({ getColor }) => {
 						color={value}
 						onClick={() => getColor(key)}
 						key={key}
+						select={(select === key)}
 					/>
 				)
 			})}
