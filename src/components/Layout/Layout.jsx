@@ -1,32 +1,35 @@
 import React, { useEffect } from 'react'
 import Header from '../Header/index'
+
 import { Container } from './styles.js'
+
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { changeBoardColor } from '../../actions/appActions'
 
-const Layout = ({ children, boardColor, location: { pathname }, changeBoardColor }) => {
+import { changeColorLayout } from '../../actions/appActions'
+
+const Layout = ({ children, layoutColor, location: { pathname }, changeColorLayout }) => {
   useEffect(() => {
     if (pathname === '/' || pathname === '/projects') {
-      changeBoardColor({ value: null })
+      changeColorLayout(null)
     }
   }, [pathname])
 
   return (
-    <Container boardColor={boardColor}>
-      <Header changeBoardColor={changeBoardColor} />
+    <Container layoutColor={layoutColor}>
+      <Header changeColorLayout={changeColorLayout} />
       {children}
     </Container>
   )
 }
 
-const mapStateToProps = ({ DataReducer }) => {
+const mapStateToProps = ({ appReducer:{ layoutColor } }) => {
   return {
-    boardColor: DataReducer.boardColor
+    layoutColor
   }
 }
 const mapDispatchToProps = {
-  changeBoardColor
+  changeColorLayout
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Layout))

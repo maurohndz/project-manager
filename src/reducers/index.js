@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux'
-import AppReducer from './AppReducer'
 import DataReducer from './DataReducer'
 
 import projectReducer from './projectReducer'
 import userReducer from './userReducer'
 import boardReducer from './boardReducer'
-
+import appReducer from './appReducer'
 
 export default combineReducers({
-  AppReducer,
+  appReducer,
   DataReducer,
   projectReducer,
   userReducer,

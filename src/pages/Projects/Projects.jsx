@@ -19,7 +19,6 @@ const Projects = ({ projects, userId, addProject, setFavoriteProject }) => {
 
   return (
     <Container>
-      {console.log(projects)}
       <Wrapper>
         <InputText
           placeholder='Search projects'

@@ -1,8 +1,8 @@
-import { CHANGE_BOARD_COLOR } from '../types/dataTypes'
+import { CHENGE_COLOR } from '../types/appTypes.js'
 
-export const changeBoardColor = (color) => {
+export const changeColorLayout = (color) => {
   return {
-    type: CHANGE_BOARD_COLOR,
-    payload: color.value
+    type: CHENGE_COLOR,
+    payload: color
   }
 }
