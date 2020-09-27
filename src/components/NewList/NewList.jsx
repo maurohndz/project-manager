@@ -6,11 +6,10 @@ import ErrorLabel from '../ErrorLabel'
 
 import { MdAddCircleOutline } from 'react-icons/md'
 
-import listSchema from '../../utils/schema/listSchema'
-
 import { Container, ConatinerBtn, BtnClose, CreateContainer } from './styles'
 
 const NewList = ({ addList }) => {
+
   const [controller, setController] = useState(false)
   const [title, setTitle] = useState('')
   const [errorTitle, setErrorTitle] = useState(null)
@@ -21,8 +20,7 @@ const NewList = ({ addList }) => {
     if (!title) {
       setErrorTitle(true)
     } else {
-      let list = listSchema(title)
-      addList(list)
+      addList({title})
       clearData()
     }
   }

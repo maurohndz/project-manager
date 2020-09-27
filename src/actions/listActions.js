@@ -1,8 +1,18 @@
-import {} from '../types/boardTypes'
+import { addList as add} from '../apiTest'
 
-export const addList = (list) => async (dispatch) => {
+import { ADD_LIST } from '../types/listTypes'
+import { LOADING } from '../types/appTypes'
+
+
+export const addList = (boardId, list) => async (dispatch) => {
+	dispatch({ type: LOADING })
+
+	let response = await add(boardId, list)
+	console.log(response)
+
 	dispatch({
-		type: '',
-		payload: list
+		type: ADD_LIST,
+		payload: response
 	}) 
+	dispatch({ type: LOADING })
 }

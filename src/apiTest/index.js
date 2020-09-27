@@ -42,20 +42,18 @@ export const updateFavorite = async (projectId) => {
 
 export const getBoard = async (boardId) => boardMock.find( board => board.id === boardId )
 
-export const addList = async (data) => {
+export const addList = async ( boardId, data ) => {
 	let list = {
 		id: uuidv4(),
-		...data.list
+		...data,
+		cards: []
 	}
 
 	boardMock.forEach(board => {
-		if(board.id === data.boardId){
+		if(board.id === boardId){
 			board.lists.push(list)
 		}
 	})
 
-	return {
-		error: null,
-		body: list.id
-	}
+	return list
 }

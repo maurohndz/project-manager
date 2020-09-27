@@ -9,7 +9,7 @@ const GridOfList = ({ lists = [], addList }) => {
   return (
     <Container>
       {
-        lists.map((list) => {
+       lists.map((list) => {
           return (
             <List {...list} key={list.id} createCard={() => {}} />
           )

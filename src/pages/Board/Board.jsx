@@ -1,53 +1,76 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import GridOfList from '../../components/GridOfList'
 import HeaderBoard from '../../components/HeaderBoard'
 
-import { changeColorLayout } from '../../actions/appActions'
 import { getBoard } from '../../actions/boardActions'
+import { setFavorite } from '../../actions/projectActions'
 import { addList } from '../../actions/listActions'
 
 import { Container } from './styles'
 
-const Board = ({ board, projects, layoutColor, history: {push},match: { params }, changeColorLayout, addList, getBoard }) => {
-   const [project, setProject] = useState({})
-  
-  useEffect(() => { 
-    if(projects.length === 0){
-      push('/projects')
+const Board = (props) => {
+	const { loading } = props.appReducer
+	const { projects } = props.projectReducer
+	const { lists, boardId } = props.boardReducer.board
+	const { 
+		history: { push },
+		match: { params },
+		getBoard,
+		setFavorite,
+		addList
+	} = props
+
+
+  const [project, setProject] = useState({})
+
+  useEffect(() => {
+  	if (projects.length === 0) {
+  		push('/projects')
       return
-    }
-    let selectProject = projects.find( item => item.id === params.id)
-    setProject(selectProject)
+  	}
 
-    getBoard(selectProject.boardId, selectProject.color) 
-  }, [projects])
+  	let selectProject = projects.find( item => item.id === params.id)
 
+  	getBoard(selectProject.boardId)
+  	setProject(selectProject)
+  }, [])
 
+  const handleAddList = (list) => {
+  	addList(boardId, list)
+  }
 
-  return (
-    <Container>
-      <HeaderBoard {...project} />
-      <GridOfList
-        {...board}
-        addList={() => {}}
-      />
-    </Container>
+  return (  
+  	<Fragment>
+  		{loading && <h2>Hola</h2>}
+
+  	{/*TOFIX:*/}
+  		{	project.title &&  
+	  		(<Container>
+		      <HeaderBoard {...project} setFavorite={setFavorite} />
+		      <GridOfList
+		        lists={lists}
+		        addList={handleAddList}
+		      />
+		    </Container>)
+	  	}
+    </Fragment>	
   )
 }
 
-const mapStateToProps = ({ boardReducer: { board }, projectReducer: { projects }, appReducer }) => {
+const mapStateToProps = ({ boardReducer, projectReducer, appReducer }) => {
   return {
-    board,
-    layoutColor: appReducer.layoutColor,
-    projects
+    boardReducer,
+    projectReducer,
+    appReducer
   }
 }
+
 const mapDispatchToProps = {
-  changeColorLayout,
-  addList,
-  getBoard
+	getBoard,
+	setFavorite,
+	addList
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

@@ -24,7 +24,6 @@ const Projects = ({ projects = [], userId = '', addProject, getProjects, setFavo
   }, [])
 
   useEffect(() => {
-    console.log(projects)
     setFilterData(projects)
   }, [projects])
 
@@ -56,10 +55,9 @@ const Projects = ({ projects = [], userId = '', addProject, getProjects, setFavo
   )
 }
 
-const mapStateToProps = ({ projectReducer, userReducer }) => {
+const mapStateToProps = ({ projectReducer }) => {
   return {
     projects: projectReducer.projects,
-    userId: userReducer.id,
   }
 }
 

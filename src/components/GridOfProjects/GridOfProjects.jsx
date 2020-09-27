@@ -4,6 +4,7 @@ import { Grid, Title, Container, NewProjectCard, NewProjectTitle } from './style
 import { MdAddCircleOutline } from 'react-icons/md'
 
 const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
+  
   const favorite = projects.filter(item => item.favorite)
   const projectsData = projects.filter(item => !item.favorite)
 

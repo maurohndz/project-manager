@@ -1,4 +1,4 @@
-import { CHENGE_COLOR } from '../types/appTypes'
+import { CHENGE_COLOR, LOADING } from '../types/appTypes'
 
 const INITIAL_STATE = {
   loading: false,
@@ -8,6 +8,12 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+
+    case LOADING:
+      return {
+        ...state,
+        loading: !state.loading
+      }
   	
   	case CHENGE_COLOR:
   		return {

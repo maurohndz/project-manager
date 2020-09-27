@@ -1,4 +1,6 @@
 import { GET_BOARD } from '../types/boardTypes'
+import { ADD_LIST } from '../types/listTypes'
+
 
 const INITIAL_STATE = {
 	board:{}
@@ -12,6 +14,16 @@ export default (state = INITIAL_STATE, action) => {
       	...state,
         board: action.payload
       }
+
+    case ADD_LIST:
+      return {
+        ...state,
+        board: {
+          ...state.board,
+          lists: [...state.board.lists, action.payload]
+        }
+      }
+
 
     default:
       return state
