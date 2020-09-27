@@ -40,7 +40,7 @@ export const updateFavorite = async (projectId) => {
 	return {}
 }
 
-export const getBoard = async (boardId) => boardMock.find( board.id === boardId )
+export const getBoard = async (boardId) => boardMock.find( board => board.id === boardId )
 
 export const addList = async (data) => {
 	let list = {
