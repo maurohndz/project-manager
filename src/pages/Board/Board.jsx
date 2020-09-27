@@ -1,57 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+
 import GridOfList from '../../components/GridOfList'
-import { Container } from './styles'
-import { changeColorLayout } from '../../actions/appActions'
 import HeaderBoard from '../../components/HeaderBoard'
-import { setFavoriteProject, createList, createCard } from '../../actions/projectActions'
 
-const mock = {
-  _id: '',
-  userID: '',
-  title: '',
-  favorite: false,
-  color: { value: '' },
-  list: []
-}
+import { changeColorLayout } from '../../actions/appActions'
+import { addList } from '../../actions/listActions'
 
-const Board = (props) => {
-  const {
-    
-  } = props
-  const [project, setProject] = useState(mock)
+import { Container } from './styles'
 
+const Board = ({ boardSelect, projects, layoutColor, match: { params }, changeColorLayout, addList }) => {
+   const [project, setProject] = useState({})
   
+  useEffect(() => { 
+    let selectProject = projects.find( item => item.id === params.id)
+    setProject(selectProject)
+
+    if(!layoutColor){
+      changeColorLayout(selectProject.color)
+    }
+    
+  }, [projects])
+
+
 
   return (
     <Container>
-      <HeaderBoard
-        title={project.title}
-        favorite={project.favorite}
-        idProject={project._id}
-        changeFavorite={() => {}}
-      />
+      <HeaderBoard {...project} />
       <GridOfList
-        lists={project.list}
-        createList={() => {}}
-        createCard={() => {}}
+        {...boardSelect}
+        addList={addList}
       />
     </Container>
   )
 }
 
-const mapStateToProps = ({ DataReducer }) => {
+const mapStateToProps = ({ boardReducer: { boardSelect }, projectReducer: { projects }, appReducer }) => {
   return {
-    projects: DataReducer.projects,
-    boardColor: DataReducer.boardColor,
-    userID: DataReducer.user._id
+    boardSelect,
+    layoutColor: appReducer.layoutColor,
+    projects
   }
 }
 const mapDispatchToProps = {
   changeColorLayout,
-  setFavoriteProject,
-  createList,
-  createCard
+  addList
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

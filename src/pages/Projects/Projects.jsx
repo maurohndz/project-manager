@@ -3,17 +3,28 @@ import { connect } from 'react-redux'
 
 import InputText from '../../components/InputText'
 import useFilter from '../../hooks/useFilter.js'
-import { Container, Wrapper } from './styles'
 import GridOfProjects from '../../components/GridOfProjects'
 import Modal from '../../components/Modal'
 import NewProject from '../../components/NewProject'
-import { setFavoriteProject, addProject } from '../../actions/projectActions'
 
-const Projects = ({ projects, userId, addProject, setFavoriteProject }) => {
+import { addProject, getProjects, setFavorite } from '../../actions/projectActions'
+
+import { Container, Wrapper } from './styles'
+
+
+const Projects = ({ projects = [], userId = '', addProject, getProjects, setFavorite }) => {
+
   const { query, setQuery, filterData, setFilterData } = useFilter(projects)
   const [modal, setModal] = useState(false)
 
   useEffect(() => {
+    if(projects.length === 0){
+      getProjects()
+    }
+  }, [])
+
+  useEffect(() => {
+    console.log(projects)
     setFilterData(projects)
   }, [projects])
 
@@ -30,7 +41,7 @@ const Projects = ({ projects, userId, addProject, setFavoriteProject }) => {
         />
         <GridOfProjects
           projects={filterData}
-          setFavoriteProject={setFavoriteProject}
+          setFavoriteProject={setFavorite}
           openModal={() => setModal(true)}
         />
         <Modal isOpen={modal} close={() => setModal(false)}>
@@ -53,8 +64,9 @@ const mapStateToProps = ({ projectReducer, userReducer }) => {
 }
 
 const mapDispatchToProps = {
-  setFavoriteProject,
-  addProject
+  addProject,
+  getProjects,
+  setFavorite
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects)

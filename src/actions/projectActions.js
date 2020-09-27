@@ -1,45 +1,31 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT, FAVORITE } from '../types/projectTypes'
-import { ADD_BOARD } from '../types/boardTypes'
-import { schemaBoard } from './boardActions'
+import { getProjects as get, createProject, updateFavorite } from '../apiTest'
+
+import { GET_PROJECTS, ADD_PROJECT, DELETE_PROJECT, UPDATE_PROJECT, FAVORITE } from '../types/projectTypes'
+
+export const getProjects = (userId) => async (dispatch) => {
+  let projects = await get()
+  dispatch({
+    type: GET_PROJECTS,
+    payload: projects
+  })
+}
 
 export const addProject = (project) => async (dispatch) => {
-  let projectId = uuidv4()
-  let board = schemaBoard(projectId)
+  let fullProject = await createProject(project)
 
   dispatch({
-    type:ADD_BOARD,
-    payload: board,
-  })
-
-  let fullProject = {
-    id: projectId,
-    userId: project.userId,
-    boardId: board.id,
-    title: project.title,
-    favorite: false,
-    color: project.color
-  }
-
-  dispatch({
-    type:ADD_PROJECT,
+    type: ADD_PROJECT,
     payload: fullProject,
   })
 }
 
-export const setFavoriteProject = (idProject) => {
+export const setFavorite = (projectId) => async (dispatch) => {
+  let response = await updateFavorite(projectId)
 
-}
-
-export const createProject = (data) => {
-
-}
-
-export const createList = (data) => {
-
-}
-
-export const createCard = (data) => {
-
+  dispatch({
+    type: FAVORITE,
+    payload: projectId
+  })
 }

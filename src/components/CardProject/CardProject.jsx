@@ -1,9 +1,13 @@
 import React from 'react'
-import { MdStar, MdStarBorder } from 'react-icons/md'
-import { Card, Title, ContainerStar } from './styles'
-import { selectBoard } from '../../actions/boardActions'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+
+import { MdStar, MdStarBorder } from 'react-icons/md'
+
+import {  } from '../../actions/boardActions'
+import { connect } from 'react-redux'
+
+import { Card, Title, ContainerStar } from './styles'
+
 
 const CardProject = (props) => {
 const {
@@ -13,7 +17,6 @@ const {
   favorite = false,
   history,
   setFavoriteProject,
-  selectBoard
 } = props
 
   const handleFavorite = (e) => {
@@ -22,7 +25,6 @@ const {
   }
 
   const redirectProject = () => {
-    selectBoard(id)
     history.push(`/project/${id}`)
   }
 
@@ -39,5 +41,4 @@ const {
 }
 
 export default connect(null, {
-  selectBoard
 })(withRouter(CardProject))

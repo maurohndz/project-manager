@@ -1,19 +1,21 @@
 import React from 'react'
-import { Container } from './styles'
+
 import List from '../List'
 import NewList from '../NewList'
 
-const GridOfList = ({ lists, createList, createCard }) => {
+import { Container } from './styles'
+
+const GridOfList = ({ lists = [], addList }) => {
   return (
     <Container>
       {
         lists.map((list) => {
           return (
-            <List {...list} key={list._id} createCard={createCard} />
+            <List {...list} key={list.id} createCard={() => {}} />
           )
         })
       }
-      <NewList createList={createList} />
+      <NewList addList={addList}/>
     </Container>
   )
 }

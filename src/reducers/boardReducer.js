@@ -1,24 +1,13 @@
-import { ADD_BOARD, SELECT_BOARD } from '../types/boardTypes'
-import { boardMock } from '../mocks/boardMock'
+import { GET_BOARD } from '../types/boardTypes'
 
-const INITIAL_STATE = {
-	boards: boardMock,
-  boardSelect: {}
-}
+const INITIAL_STATE = {}
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
-  	case ADD_BOARD:
-  		return {
-  			...state,
-  			boards: [...state.boards, action.payload]
-  		}
-
-    case SELECT_BOARD:
+  	case GET_BOARD:
       return {
-        ...state,
-        boardSelect: state.boards.find( board => board.id === action.payload)
+        ...action.payload
       }
 
     default:

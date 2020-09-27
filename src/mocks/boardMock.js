@@ -9,11 +9,11 @@ export const boardMock = [
 	{
 		id: boardId,
     projectId: projectID,
-    list: []
+    lists: []
 	},
 	{
 		id: boardIdTwo,
     projectId: projectIDTwo,
-    list: []
+    lists: []
 	}
 ]

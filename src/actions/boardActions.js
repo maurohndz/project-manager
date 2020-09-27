@@ -1,19 +1,16 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { SELECT_BOARD } from '../types/boardTypes'
+import { getBoard as get } from '../apiTest'
+
+import { GET_BOARD } from '../types/boardTypes'
 import { CHENGE_COLOR } from '../types/appTypes'
 
-export const schemaBoard = (projectId) => {
-	return {
-		id: uuidv4(),
-		projectId: projectId,
-		lists: []
-	}
-}
 
-export const selectBoard = (projectId) => async (dispatch, getState) => {
+export const getBoard = (boardId) => async (dispatch) => {
 	const { projects } = await getState().projectReducer
-	const { color, boardId } = projects.find(element => element.id === projectId) 
+
+	let board = get(boardId)	
+	let { color } = projects.find(element => element.id === board.projectId)
 
 	dispatch({
 		type: CHENGE_COLOR,
@@ -21,7 +18,7 @@ export const selectBoard = (projectId) => async (dispatch, getState) => {
 	})
 
 	dispatch({
-		type: SELECT_BOARD,
-		payload: boardId
+		type: GET_BOARD,
+		payload: board
 	})
 }

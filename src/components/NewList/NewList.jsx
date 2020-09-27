@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+
 import InputText from '../InputText'
 import Button from '../Button'
-import { Container, ConatinerBtn, BtnClose, CreateContainer } from './styles'
 import ErrorLabel from '../ErrorLabel'
+
 import { MdAddCircleOutline } from 'react-icons/md'
 
-const NewList = ({ createList }) => {
+import listSchema from '../../utils/schema/listSchema'
+
+import { Container, ConatinerBtn, BtnClose, CreateContainer } from './styles'
+
+const NewList = ({ addList }) => {
   const [controller, setController] = useState(false)
   const [title, setTitle] = useState('')
   const [errorTitle, setErrorTitle] = useState(null)
@@ -16,7 +21,8 @@ const NewList = ({ createList }) => {
     if (!title) {
       setErrorTitle(true)
     } else {
-      createList({ title: title })
+      let list = listSchema(title)
+      addList(list)
       clearData()
     }
   }

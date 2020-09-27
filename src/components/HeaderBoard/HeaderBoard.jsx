@@ -1,12 +1,14 @@
 import React from 'react'
+
 import { MdStarBorder } from 'react-icons/md'
 import { Container, FavoriteContainer, Star } from './styles'
 
-const HeaderBoard = ({ title, favorite, idProject, changeFavorite }) => {
+const HeaderBoard = ({ title, favorite }) => {
+
   return (
     <Container>
       <h2>{title}</h2>
-      <FavoriteContainer onClick={() => changeFavorite(idProject)}>
+      <FavoriteContainer onClick={() => {}}>
         {
           favorite
             ? <Star size={30} />
@@ -16,5 +18,7 @@ const HeaderBoard = ({ title, favorite, idProject, changeFavorite }) => {
     </Container>
   )
 }
+
+
 
 export default HeaderBoard
