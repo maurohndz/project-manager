@@ -12,7 +12,10 @@ import { addProject, getProjects, setFavorite } from '../../actions/projectActio
 import { Container, Wrapper } from './styles'
 
 
-const Projects = ({ projects = [], userId = '', addProject, getProjects, setFavorite }) => {
+const Projects = (props) => {
+  const { projects = [] } = props.projectReducer
+  const { addProject, getProjects, setFavorite, userId = '' } = props
+
 
   const { query, setQuery, filterData, setFilterData } = useFilter(projects)
   const [modal, setModal] = useState(false)
@@ -57,7 +60,7 @@ const Projects = ({ projects = [], userId = '', addProject, getProjects, setFavo
 
 const mapStateToProps = ({ projectReducer }) => {
   return {
-    projects: projectReducer.projects,
+    projectReducer
   }
 }
 
