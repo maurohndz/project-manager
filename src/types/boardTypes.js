@@ -1,0 +1,1 @@
+export const GET_BOARD = 'get_board'
