@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Item } from './styles'
 
 const Button = ({ text = 'Button', type = 'button', typeBtn = 'success' }) => {

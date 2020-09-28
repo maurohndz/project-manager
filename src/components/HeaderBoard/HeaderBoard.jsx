@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { MdStarBorder } from 'react-icons/md'
+
 import { Container, FavoriteContainer, Star } from './styles'
 
 const HeaderBoard = ({ id, title, favorite, setFavorite }) => {

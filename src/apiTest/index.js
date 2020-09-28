@@ -57,3 +57,23 @@ export const addList = async ( boardId, data ) => {
 
 	return list
 }
+
+export const addCard = async (boardId, listId, card) => {
+	let fullCard = {
+		id: uuidv4(),
+		title: card.title,
+		status: card.status || false
+	}
+
+	boardMock.forEach(board => {
+		if(board.id === boardId){
+			board.lists.forEach((list) => {
+				if (list.id === listId) {
+					list.cards.push(fullCard)
+				}
+			})
+		}
+	})
+
+	return fullCard
+}

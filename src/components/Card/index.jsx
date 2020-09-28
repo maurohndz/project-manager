@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Container, Settings } from './styles'
 
 const Card = ({ title }) => {

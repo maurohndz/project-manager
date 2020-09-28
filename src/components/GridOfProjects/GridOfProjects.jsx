@@ -1,10 +1,12 @@
 import React from 'react'
+
 import CardProject from '../CardProject'
-import { Grid, Title, Container, NewProjectCard, NewProjectTitle } from './styles'
+
 import { MdAddCircleOutline } from 'react-icons/md'
 
-const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
-  
+import { Grid, Title, Container, NewProjectCard, NewProjectTitle } from './styles'
+
+const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {  
   const favorite = projects.filter(item => item.favorite)
   const projectsData = projects.filter(item => !item.favorite)
 

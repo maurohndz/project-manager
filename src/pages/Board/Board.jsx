@@ -7,6 +7,7 @@ import HeaderBoard from '../../components/HeaderBoard'
 import { getBoard } from '../../actions/boardActions'
 import { setFavorite } from '../../actions/projectActions'
 import { addList } from '../../actions/listActions'
+import { addCard } from '../../actions/cardActions'
 
 import { Container } from './styles'
 
@@ -19,7 +20,8 @@ const Board = (props) => {
 		match: { params },
 		getBoard,
 		setFavorite,
-		addList
+		addList,
+    addCard
 	} = props
 
 
@@ -52,6 +54,7 @@ const Board = (props) => {
 		      <GridOfList
 		        lists={lists}
 		        addList={handleAddList}
+            addCard={addCard}
 		      />
 		    </Container>)
 	  	}
@@ -70,7 +73,8 @@ const mapStateToProps = ({ boardReducer, projectReducer, appReducer }) => {
 const mapDispatchToProps = {
 	getBoard,
 	setFavorite,
-	addList
+	addList,
+  addCard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board)

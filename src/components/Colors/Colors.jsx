@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
+
 import { getColors } from '../../utils/colors'
+
 import { Container, Item } from './styles'
 
 const Colors = ({ getColor, select }) => {

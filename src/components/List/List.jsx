@@ -3,12 +3,12 @@ import { Container, TitleList, Cards } from './styles'
 import NewCard from '../NewCard'
 import Card from '../Card'
 
-const List = ({ title, cards, createCard, _id }) => {
-  const handleCreateCard = (data) => {
-    createCard({
-      ...data,
-      listID: _id
-    })
+const List = (props) => {
+  const { id, title, cards } = props
+  const { addCard } = props
+
+  const handleAddCard = (data) => {
+    addCard(id, data)
   }
 
   return (
@@ -19,12 +19,12 @@ const List = ({ title, cards, createCard, _id }) => {
           <Cards>
             {
               cards.map((item) => {
-                return <Card key={item._id} {...item} />
+                return <Card key={item.id} {...item} />
               })
             }
           </Cards>
       }
-      <NewCard createCard={handleCreateCard} />
+      <NewCard addCard={handleAddCard} />
     </Container>
   )
 }

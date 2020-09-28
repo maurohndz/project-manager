@@ -8,7 +8,6 @@ export const addList = (boardId, list) => async (dispatch) => {
 	dispatch({ type: LOADING })
 
 	let response = await add(boardId, list)
-	console.log(response)
 
 	dispatch({
 		type: ADD_LIST,
