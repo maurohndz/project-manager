@@ -8,13 +8,14 @@ import Modal from '../../components/Modal'
 import NewProject from '../../components/NewProject'
 
 import { addProject, getProjects, setFavorite } from '../../actions/projectActions'
+import { changeColorLayout } from '../../actions/appActions'
 
 import { Container, Wrapper } from './styles'
 
 
 const Projects = (props) => {
   const { projects = [] } = props.projectReducer
-  const { addProject, getProjects, setFavorite, userId = '' } = props
+  const { addProject, getProjects, setFavorite, changeColorLayout, userId = '' } = props
 
 
   const { query, setQuery, filterData, setFilterData } = useFilter(projects)
@@ -45,6 +46,7 @@ const Projects = (props) => {
           projects={filterData}
           setFavoriteProject={setFavorite}
           openModal={() => setModal(true)}
+          changeColorLayout={changeColorLayout}
         />
         <Modal isOpen={modal} close={() => setModal(false)}>
           <NewProject
@@ -67,7 +69,8 @@ const mapStateToProps = ({ projectReducer }) => {
 const mapDispatchToProps = {
   addProject,
   getProjects,
-  setFavorite
+  setFavorite,
+  changeColorLayout
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects)

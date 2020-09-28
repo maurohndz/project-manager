@@ -6,7 +6,9 @@ import { MdAddCircleOutline } from 'react-icons/md'
 
 import { Grid, Title, Container, NewProjectCard, NewProjectTitle } from './styles'
 
-const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {  
+const GridOfProjects = (props) => {  
+  const { projects, setFavoriteProject, changeColorLayout, openModal } = props
+
   const favorite = projects.filter(item => item.favorite)
   const projectsData = projects.filter(item => !item.favorite)
 
@@ -19,7 +21,12 @@ const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
             <Grid>
               {
                 favorite.map((project) => {
-                  return <CardProject key={project.id} {...project} setFavoriteProject={setFavoriteProject} />
+                  return <CardProject 
+                          key={project.id}
+                          {...project}
+                          setFavoriteProject={setFavoriteProject}
+                          changeColorLayout={changeColorLayout}
+                        />
                 })
               }
             </Grid>
@@ -30,7 +37,12 @@ const GridOfProjects = ({ projects, setFavoriteProject, openModal }) => {
         <Grid>
           {
             projectsData.map((project) => {
-              return <CardProject key={project.id} {...project} setFavoriteProject={setFavoriteProject} />
+              return <CardProject 
+                      key={project.id}
+                      {...project}
+                      setFavoriteProject={setFavoriteProject}
+                      changeColorLayout={changeColorLayout}
+                    />
             })
           }
           <NewProjectCard onClick={openModal}>

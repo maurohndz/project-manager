@@ -9,12 +9,6 @@ import { withRouter } from 'react-router-dom'
 import { changeColorLayout } from '../../actions/appActions'
 
 const Layout = ({ children, layoutColor, location: { pathname }, changeColorLayout }) => {
-  useEffect(() => {
-    if (pathname === '/' || pathname === '/projects') {
-      changeColorLayout(null)
-    }
-  }, [pathname])
-
   return (
     <Container layoutColor={layoutColor}>
       <Header changeColorLayout={changeColorLayout} />
