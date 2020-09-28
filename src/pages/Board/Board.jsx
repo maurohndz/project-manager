@@ -14,7 +14,7 @@ import { Container } from './styles'
 const Board = (props) => {
 	const { loading } = props.appReducer
 	const { projects } = props.projectReducer
-	const { lists, boardId } = props.boardReducer.board
+	const { lists, id, boardId } = props.boardReducer.board
 	const { 
 		history: { push },
 		match: { params },
@@ -35,12 +35,15 @@ const Board = (props) => {
 
   	let selectProject = projects.find( item => item.id === params.id)
 
-  	getBoard(selectProject.boardId)
+    if(id != selectProject.boardId){
+      getBoard(selectProject.boardId)
+    }
+
   	setProject(selectProject)
   }, [])
 
   const handleAddList = (list) => {
-  	addList(boardId, list)
+  	addList(list)
   }
 
   return (  

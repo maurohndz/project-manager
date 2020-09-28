@@ -4,10 +4,11 @@ import { ADD_LIST } from '../types/listTypes'
 import { LOADING } from '../types/appTypes'
 
 
-export const addList = (boardId, list) => async (dispatch) => {
+export const addList = (list) => async (dispatch, getState) => {
 	dispatch({ type: LOADING })
 
-	let response = await add(boardId, list)
+	let { board } = await getState().boardReducer
+	let response = await add(board.id, list)
 
 	dispatch({
 		type: ADD_LIST,

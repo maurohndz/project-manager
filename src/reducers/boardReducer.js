@@ -18,26 +18,12 @@ export default (state = INITIAL_STATE, action) => {
 
     case ADD_LIST:
       return {
-        ...state,
-        board: {
-          ...state.board,
-          lists: [...state.board.lists, action.payload]
-        }
+        ...state
       }
 
     case ADD_CARD:
       return {
-        ...state,
-        board: {
-          ...state.board,
-          lists: state.board.lists.map(list => {
-            if(list.id === action.payload.listId){
-              list.cards.push(action.payload.card)
-               return list
-            }
-            return list
-          })
-        }
+        ...state
       }
 
 
